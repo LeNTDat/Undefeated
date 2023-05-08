@@ -4,13 +4,13 @@ using UnityEngine;
 public class LookAtEnemy : MonoBehaviour
 {
     Transform enemy;
-    [SerializeField] List<Transform> target = new List<Transform>();
+    [SerializeField] List<Transform> turret = new List<Transform>();
     [SerializeField] float XMax;
     [SerializeField] float ZMax;
 
     void Start()
     {
-        enemy = FindObjectOfType<EnemyMovement>().transform;
+        enemy = GameObject.FindWithTag("Enemy").transform;
     }
     void Update()
     {
@@ -19,9 +19,10 @@ public class LookAtEnemy : MonoBehaviour
 
     void AIlocator()
     {
-        foreach (var itemTransform in target)
+        foreach (var itemTransform in turret)
         {
             itemTransform.transform.LookAt(enemy);
         }
+ 
     }
 }

@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
@@ -12,7 +11,18 @@ public class EnemyMovement : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(FollowingPath());
+        FindingPath();
+        StartCoroutine(FollowingPath()); 
+    }
+
+    void FindingPath()
+    {
+        GameObject parent = GameObject.FindGameObjectWithTag("Path");
+
+        foreach (Transform item in parent.transform)
+        {
+            waypoints.Add(item.GetComponent<Waypoints>());
+        }
     }
 
     IEnumerator FollowingPath() {

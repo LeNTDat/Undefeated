@@ -5,12 +5,19 @@ using UnityEngine;
 [ExecuteAlways]
 public class CordinateSystems : MonoBehaviour
 {
-
     [SerializeField]TextMeshPro m_blockPos;
+    [SerializeField] Color c_isPlaceable = Color.blue;
+    [SerializeField] Color c_blocked = Color.red;
     string blockPos;
+    Waypoints waypoints;
+    TextMeshPro m_textMeshPro;
+
     void Awake()
     {
         DisplayPosBlock();
+        waypoints = GetComponent<Waypoints>();
+        m_textMeshPro =GetComponentInChildren<TextMeshPro>(); 
+        m_textMeshPro.enabled = false;
     }
 
     void Update()
@@ -18,6 +25,26 @@ public class CordinateSystems : MonoBehaviour
         if (!Application.isPlaying) { 
             DisplayPosBlock();
             DisplayNameBlock();
+        }
+        CordinateChangeColor();
+        ToggleLabels();
+    }
+
+    void ToggleLabels()
+    {
+        if(Input.GetKeyDown(KeyCode.C)) { 
+            m_textMeshPro.enabled = !m_textMeshPro.IsActive();
+        }
+    }
+
+    void CordinateChangeColor ()
+    {
+        if (waypoints.GetIsPlaceable)
+        {
+            m_textMeshPro.color = c_isPlaceable;
+        }
+        else { 
+            m_textMeshPro.color = c_blocked;
         }
     }
 

@@ -49,7 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waypoints: []
   waitingTime: 1
-  enemySpeed: 1
+  enemySpeed: 0.3
 --- !u!65 &6172566715575603758
 BoxCollider:
   m_ObjectHideFlags: 0
