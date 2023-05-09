@@ -9,20 +9,29 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] float waitingTime;
     [SerializeField] [Range(0f, 5f)] float enemySpeed;
 
-    void Start()
+
+    void OnEnable()
     {
         FindingPath();
-        StartCoroutine(FollowingPath()); 
+        ReturnToStart();
+        StartCoroutine(FollowingPath());
     }
+  
 
     void FindingPath()
     {
+        waypoints.Clear();
         GameObject parent = GameObject.FindGameObjectWithTag("Path");
 
         foreach (Transform item in parent.transform)
         {
             waypoints.Add(item.GetComponent<Waypoints>());
         }
+    }
+
+    void ReturnToStart()
+    {
+        transform.position = waypoints[0].transform.position;
     }
 
     IEnumerator FollowingPath() {
@@ -33,10 +42,6 @@ public class EnemyMovement : MonoBehaviour
             float movePercent = 0f;
             
             transform.LookAt(endPos);
-            if(item == waypoints[(waypoints.Count - 1)])
-            {
-                GetComponentInChildren<Animator>().Play("IdleBattle");
-            }
 
             while (movePercent < 1f)
             {
@@ -45,5 +50,6 @@ public class EnemyMovement : MonoBehaviour
                 yield return new WaitForEndOfFrame();
             }
         }
+        gameObject.SetActive(false);
     }
 }

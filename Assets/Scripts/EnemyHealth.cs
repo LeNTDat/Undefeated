@@ -29,7 +29,7 @@ public class EnemyHealth : MonoBehaviour
         if (CurrentHitPoint < 1)
         {
             animator.Play("Die");
-            Destroy(gameObject,1f);
+            gameObject.SetActive(false);
         }
     }
 }
