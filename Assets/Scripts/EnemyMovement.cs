@@ -9,6 +9,11 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] float waitingTime;
     [SerializeField] [Range(0f, 5f)] float enemySpeed;
 
+    EnemyDrop enemyPenalty;
+    void Start()
+    {
+        enemyPenalty = FindObjectOfType<EnemyDrop>();    
+    }
 
     void OnEnable()
     {
@@ -50,6 +55,7 @@ public class EnemyMovement : MonoBehaviour
                 yield return new WaitForEndOfFrame();
             }
         }
+        enemyPenalty.PenaltyHealth();
         gameObject.SetActive(false);
     }
 }

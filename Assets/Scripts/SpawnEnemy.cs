@@ -1,12 +1,10 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SpawnEnemy : MonoBehaviour
 {
     [SerializeField] GameObject enemy;
-    [SerializeField] float spawnRepeatTime = 2f;
+    [SerializeField] float spawnRepeatTime = 3f;
     [SerializeField] int poolSize = 5;
 
     GameObject[] pool;

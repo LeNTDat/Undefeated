@@ -5,11 +5,13 @@ public class EnemyHealth : MonoBehaviour
     public int MaxHitPoint;
     int CurrentHitPoint;
     Animator animator;
+    EnemyDrop enemyDrop;
     // Start is called before the first frame update
     void Start()
     {
         CurrentHitPoint = MaxHitPoint;
         animator = GetComponentInChildren<Animator>();
+        enemyDrop = GetComponent<EnemyDrop>();
     }
 
     private void OnParticleCollision(GameObject other)
@@ -28,8 +30,9 @@ public class EnemyHealth : MonoBehaviour
     {
         if (CurrentHitPoint < 1)
         {
-            animator.Play("Die");
+            enemyDrop.Drop();
             gameObject.SetActive(false);
+            CurrentHitPoint = MaxHitPoint;
         }
     }
 }

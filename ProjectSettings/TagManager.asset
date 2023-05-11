@@ -8,6 +8,7 @@ TagManager:
   - Path
   - FxTemporaire
   - Spawn
+  - Bank
   layers:
   - Default
   - TransparentFX
