@@ -1,12 +1,13 @@
 using UnityEngine;
 
+[RequireComponent(typeof(EnemyDrop))]
 public class EnemyHealth : MonoBehaviour
 {
-    public int MaxHitPoint;
-    int CurrentHitPoint;
+    [SerializeField] int MaxHitPoint;
+    [SerializeField] int CurrentHitPoint;
+    [SerializeField] int ChestDifficult = 1;
     Animator animator;
     EnemyDrop enemyDrop;
-    // Start is called before the first frame update
     void Start()
     {
         CurrentHitPoint = MaxHitPoint;
@@ -31,6 +32,7 @@ public class EnemyHealth : MonoBehaviour
         if (CurrentHitPoint < 1)
         {
             enemyDrop.Drop();
+            MaxHitPoint += ChestDifficult;
             gameObject.SetActive(false);
             CurrentHitPoint = MaxHitPoint;
         }

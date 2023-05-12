@@ -134,7 +134,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4676e1ca96fb6394b9b207acc8a00393, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 3599672914156648763, guid: 3c960e578cd14194eb00b38f88fabc12, type: 3}
+  enemy:
+  - {fileID: 4807599687521433688, guid: 1d115ac093cd4874f8b785dac1de8a5c, type: 3}
+  - {fileID: 3599672914156648763, guid: 3c960e578cd14194eb00b38f88fabc12, type: 3}
   spawnRepeatTime: 2
   poolSize: 5
 --- !u!4 &3451613591073795718 stripped

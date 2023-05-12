@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
@@ -22,6 +23,7 @@ public class PlayerHealth : MonoBehaviour
     void Update()
     {
         DisplayHealth();
+        ReloadGame();
     }
 
     void DisplayHealth ()
@@ -37,5 +39,13 @@ public class PlayerHealth : MonoBehaviour
     public void IncrementHealth(int amount)
     {
         currentHealth += Mathf.Abs(amount);
+    }
+
+    void ReloadGame()
+    {
+        if (currentHealth <= 0)
+        {
+            SceneManager.LoadScene("Game");
+        }
     }
 }

@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class SpawnEnemy : MonoBehaviour
 {
-    [SerializeField] GameObject enemy;
+    [SerializeField] GameObject[] enemy;
     [SerializeField] float spawnRepeatTime = 3f;
     [SerializeField] int poolSize = 5;
 
@@ -22,10 +22,10 @@ public class SpawnEnemy : MonoBehaviour
     void SpawnEnemyInPool ()
     {
         pool = new GameObject[poolSize];
-
         for(int i = 0; i < pool.Length; i++)
         {
-            pool[i] = Instantiate(enemy, transform.position, Quaternion.identity);
+            int randomNumber = Random.Range(0, 2);
+            pool[i] = Instantiate(enemy[randomNumber], transform.position, Quaternion.identity);
             pool[i].SetActive(false);
         }
     }
