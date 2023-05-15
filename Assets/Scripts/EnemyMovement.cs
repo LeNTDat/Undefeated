@@ -28,10 +28,12 @@ public class EnemyMovement : MonoBehaviour
         waypoints.Clear();
         GameObject parent = GameObject.FindGameObjectWithTag("Path");
 
-        foreach (Transform item in parent.transform)
-        {
-            waypoints.Add(item.GetComponent<Waypoints>());
-        }
+       
+    }
+
+    void MonsterPool()
+    {
+
     }
 
     void ReturnToStart()
