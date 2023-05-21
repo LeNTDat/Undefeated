@@ -9,6 +9,10 @@ TagManager:
   - FxTemporaire
   - Spawn
   - Bank
+  - Upgrade
+  - Tower_1
+  - Tower_2
+  - Tower_3
   layers:
   - Default
   - TransparentFX

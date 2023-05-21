@@ -1,6 +1,6 @@
 using TMPro;
-using UnityEditor;
 using UnityEngine;
+using UnityEditor;
 
 [ExecuteAlways]
 public class CordinateSystems : MonoBehaviour
@@ -51,8 +51,10 @@ public class CordinateSystems : MonoBehaviour
     void DisplayPosBlock()
     {
         Vector3 pos = transform.position;
-        pos.x = Mathf.RoundToInt(pos.x / EditorSnapSettings.move.x);
-        pos.z = Mathf.RoundToInt(pos.z / EditorSnapSettings.move.x);
+        #if UNITY_EDITOR
+        pos.x = Mathf.RoundToInt(pos.x / UnityEditor.EditorSnapSettings.move.x);
+        pos.z = Mathf.RoundToInt(pos.z / UnityEditor.EditorSnapSettings.move.x);
+        #endif
         blockPos = string.Format( "({0}, {1})" , pos.x, pos.z);
         m_blockPos.text = blockPos;
 
